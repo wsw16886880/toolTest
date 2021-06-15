@@ -2,6 +2,8 @@ package com.test.starter.test;
 
 import org.apache.ibatis.reflection.ArrayUtil;
 
+import java.text.SimpleDateFormat;
+
 /**
  * @author: xq
  * @Date: 2021/03/01 15:09
@@ -12,6 +14,44 @@ public class BubbleAndInsertionSort {
 //        bubbleSort(array);
         insertionSort(array);
         System.out.println(ArrayUtil.toString(array));
+
+        // 1百万个数组，每个数组10个元素
+        int[][] bubbleArray = new int[1000000][10];
+        int[][] insertionArray = new int[1000000][10];
+
+        // 随机生成数据
+        int max = 1000;
+        int min = 1;
+        for (int l = 0; l < 1000000; l++) {
+            for (int j = 0; j < 10; j++) {
+                int num = (int) (((max-min) * Math.random()) + min);
+                bubbleArray[l][j] = num;
+                insertionArray[l][j] = num;
+            }
+//            System.out.println(ArrayUtil.toString(bubbleArray[l]));
+//            System.out.println(ArrayUtil.toString(insertionArray[l]));
+        }
+
+        // 验证排序时间耗时
+        long currentOfBubble = System.currentTimeMillis();
+        for (int l = 0; l < 1000000; l++) {
+            bubbleSort(bubbleArray[l]);
+        }
+        long endOfBubble = System.currentTimeMillis();
+        long finishOfBubble = endOfBubble - currentOfBubble;
+
+        long currentOfInsertion = System.currentTimeMillis();
+        for (int l = 0; l < 1000000; l++) {
+            insertionSort(insertionArray[l]);
+        }
+        long endOfInsertion = System.currentTimeMillis();
+        long finishOfInsertion = endOfInsertion - currentOfInsertion;
+
+
+//        SimpleDateFormat sdf = new SimpleDateFormat(String.valueOf(finishOfBubble));
+
+        System.out.println("bubbleSort 速度：" + finishOfBubble);
+        System.out.println("insertionSort 速度：" + finishOfInsertion);
     }
 
     /**

@@ -1,6 +1,8 @@
 package com.test.starter.test;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -60,7 +62,10 @@ public class ZipTest {
     }
 
     public static void main(String[] args) throws IOException {
-        ZipTest zipTest = new ZipTest();
-        zipTest.zip("D:\\testZip.zip", new File("D:\\123"));
+//        ZipTest zipTest = new ZipTest();
+//        zipTest.zip("D:\\testZip.zip", new File("D:\\123"));
+
+//        String s = "/home/sftp2/files/1111/99e34601-1fec-4231-8335-fc325877b07f/99e34601-1fec-4231-8335-fc325877b07f\\\\1111";
+        System.out.println(new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()));
     }
 }
